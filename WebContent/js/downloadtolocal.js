@@ -2,7 +2,22 @@ $(function(){
 	
 	$("#download").click(function(){
 		console.log("Download me...");
-		downloadFile($("#url").val(),"download.jpg");
+		//downloadFile($("#url").val(),"download.jpg");
+		
+		$.multidownload({		
+			dllink: $("#url").val(),
+			path:"download.jpg",
+			progress:function(data){
+				console.log(data);
+			},
+			done:function(){
+				
+			},
+			fail:function(){
+				
+			}
+		});
+		
 	});
 	
 });
@@ -43,6 +58,7 @@ function downloadFile(dllink,path){
 					function(grantedBytes) {
 		    				
 		    		  console.log("requestQuota event handler");
+		    		  console.log("grantedBytes:" + grantedBytes);
 		    		  
 						window.requestFileSystem(window.TEMPORARY,grantedBytes, function(fileSystem) {//fs: file system
 							  
@@ -73,7 +89,7 @@ function downloadFile(dllink,path){
 							                // navigate to file, will download
 							                console.log("writer.writeend");
 							                
-							                //trigger click
+							                //download file from TEMPORARY into download folder
 							                var $downloadAnchor = $("<a></a>");
 							                console.log($downloadAnchor);
 							                $downloadAnchor.attr("id","dllink").attr("href",fileEntry.toURL());//set file system url

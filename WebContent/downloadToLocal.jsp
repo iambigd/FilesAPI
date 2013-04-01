@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Download file</title>
 <script type="text/javascript" src="js/plugins/jquery.core.1.8.2.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.multidownload.js"></script>
 <script type="text/javascript" src="js/downloadtolocal.js"></script>
 </head>
 <body>
